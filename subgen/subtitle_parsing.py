@@ -1,12 +1,12 @@
 import math
 import datetime
-from subgen.subtitle import Subtitle
+#from subgen.subtitle import Subtitle
 
-def time_parse(s):
-    hour, minute, second_decimal = [t for t in s.split(':')]
-    second, microsec = second_decimal.split('.')
-    microsec = microsec.ljust(6, '0')
-    return [int(hour), int(minute), int(second), int(microsec)]
+#def time_parse(s):
+    #hour, minute, second_decimal = [t for t in s.split(':')]
+    #second, microsec = second_decimal.split('.')
+    #microsec = microsec.ljust(6, '0')
+    #return [int(hour), int(minute), int(second), int(microsec)]
 
 def subtitle_parser(sub_file):
     res_start = []
@@ -18,8 +18,10 @@ def subtitle_parser(sub_file):
             if inEvents == True:
                 sl = s.strip().split(',')
                 if sl[1] != ' Start':
-                    rs = time_parse(sl[1])
-                    re = time_parse(sl[2])
+                    #rs = time_parse(sl[1])
+                    #re = time_parse(sl[2])
+                    rs = sl[1]
+                    re = sl[2]
                     res_start.append(rs)
                     res_end.append(re)
             if s.strip() == "[Events]":
