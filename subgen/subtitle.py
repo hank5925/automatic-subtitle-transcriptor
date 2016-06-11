@@ -79,6 +79,15 @@ class Subtitle:
         self._data.append(d)
         #self.index += 1;
 
+    def addSubtitle(self, idx, sub):
+        if idx >= len(self._data):
+            raise IndexError("The index for self._data is out of bound.")
+        if isinstance(sub, str) == False:
+            raise TypeError("The sub value is not a string at all.")
+
+        self._data[idx]['text'] = sub
+
+
     def clean(self):
         del self._data[:]
         #self.index = len(self._data)
