@@ -11,6 +11,7 @@ import datetime
 def subtitle_parser(sub_file):
     res_start = []
     res_end = []
+    res_offset = 0
     with open(sub_file, 'r') as f:
         inEvents = False
         ss = f.readlines()
@@ -24,9 +25,12 @@ def subtitle_parser(sub_file):
                     re = sl[2]
                     res_start.append(rs)
                     res_end.append(re)
+            else:
+                res_offset += len(s)
             if s.strip() == "[Events]":
                 inEvents = True
-    return res_start, res_end
+                res_offset += len(s)
+    return res_start, res_end, res_offset
 
 #if __name__ == "__main__":
     #import sys
